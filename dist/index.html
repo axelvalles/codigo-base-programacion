@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ruta práctica para reforzar fundamentos de programación con Python, SQL, Java, JavaScript y C++.">
+  <title>Código Base — Ruta de programación</title>
+  <style>
+    :root {
+      --ink: #162019;
+      --muted: #667068;
+      --paper: #f4f0e6;
+      --surface: #fffdf7;
+      --line: #d8d2c4;
+      --green: #184f3a;
+      --lime: #d9f55a;
+      --orange: #e96c35;
+      --shadow: 0 18px 55px rgba(22, 32, 25, .10);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 92% 3%, rgba(217,245,90,.30), transparent 25rem),
+        var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    a { color: inherit; }
+    button { font: inherit; }
+    code, pre { font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace; }
+
+    .shell { width: min(1160px, calc(100% - 32px)); margin: 0 auto; }
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--line);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; letter-spacing: -.03em; }
+    .brand-mark { width: 28px; height: 28px; display: grid; place-items: center; background: var(--green); color: var(--lime); border-radius: 8px; }
+    .topbar nav { display: flex; gap: 24px; font-size: .9rem; font-weight: 700; }
+    .topbar nav a { text-decoration: none; }
+
+    .hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: 46px; padding: 76px 0 60px; align-items: center; }
+    .eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; font-weight: 900; color: var(--green); }
+    h1 { margin: 12px 0 20px; max-width: 820px; font-family: Georgia, serif; font-size: clamp(3.2rem, 8vw, 6.6rem); line-height: .9; letter-spacing: -.065em; font-weight: 500; }
+    h1 em { color: var(--orange); font-style: italic; }
+    .lead { max-width: 650px; color: #4f5951; font-size: clamp(1.05rem, 2vw, 1.3rem); }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button { display: inline-flex; align-items: center; gap: 9px; border: 1px solid var(--ink); border-radius: 999px; padding: 12px 18px; text-decoration: none; font-weight: 800; background: transparent; cursor: pointer; }
+    .button.primary { background: var(--ink); color: white; }
+    .button:hover { transform: translateY(-1px); }
+
+    .terminal { background: #101612; color: #e9eee8; border-radius: 24px; padding: 24px; box-shadow: var(--shadow); transform: rotate(1.5deg); }
+    .terminal-head { display: flex; gap: 7px; margin-bottom: 22px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #59615b; }
+    .dot:first-child { background: #ff725d; } .dot:nth-child(2) { background: #ffd45c; } .dot:nth-child(3) { background: #6edb8f; }
+    .terminal pre { margin: 0; white-space: pre-wrap; color: #cbd6cc; font-size: .89rem; line-height: 1.85; }
+    .prompt { color: var(--lime); } .comment { color: #7f9183; }
+
+    .section { padding: 72px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 30px; }
+    h2 { margin: 4px 0 0; font-family: Georgia, serif; font-size: clamp(2.3rem, 5vw, 4rem); line-height: 1; letter-spacing: -.045em; font-weight: 500; }
+    .section-note { max-width: 480px; color: var(--muted); }
+
+    .principles { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); background: var(--surface); }
+    .principle { padding: 28px; border-right: 1px solid var(--line); }
+    .principle:last-child { border-right: 0; }
+    .number { color: var(--orange); font-weight: 900; font-size: .8rem; }
+    .principle h3 { margin: 26px 0 8px; font-size: 1.25rem; }
+    .principle p { margin: 0; color: var(--muted); }
+
+    .roadmap { display: grid; gap: 12px; }
+    .module { display: grid; grid-template-columns: 100px 1fr auto; gap: 24px; align-items: center; background: var(--surface); border: 1px solid var(--line); padding: 22px; border-radius: 16px; }
+    .module-index { font-family: Georgia, serif; font-size: 2rem; color: var(--orange); }
+    .module h3 { margin: 0 0 5px; }
+    .module p { margin: 0; color: var(--muted); }
+    .tags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 7px; }
+    .tag { background: #ebe6da; border-radius: 999px; padding: 6px 10px; font-size: .75rem; font-weight: 800; }
+
+    .lesson { background: var(--green); color: white; border-radius: 28px; padding: clamp(24px, 5vw, 54px); }
+    .lesson .eyebrow { color: var(--lime); }
+    .lesson h2 { max-width: 760px; }
+    .lesson-grid { display: grid; grid-template-columns: 280px 1fr; gap: 34px; margin-top: 42px; }
+    .lesson-nav { display: grid; gap: 8px; align-content: start; }
+    .lesson-tab { border: 1px solid rgba(255,255,255,.18); background: transparent; color: #d8e1db; text-align: left; border-radius: 12px; padding: 13px 15px; cursor: pointer; font-weight: 800; }
+    .lesson-tab.active { background: var(--lime); color: var(--ink); border-color: var(--lime); }
+    .lesson-panel { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); padding: 24px; border-radius: 18px; }
+    .lesson-panel h3 { margin-top: 0; font-size: 1.55rem; }
+    .lesson-panel ol { padding-left: 20px; }
+    .lesson-panel li { margin: 10px 0; }
+    .lesson-panel a { color: var(--lime); }
+    .command { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-top: 18px; background: #0e1712; border-radius: 12px; padding: 13px 15px; overflow: auto; }
+    .copy { flex: none; border: 0; color: var(--ink); background: var(--lime); border-radius: 8px; padding: 7px 10px; cursor: pointer; font-weight: 900; }
+    .outcome { margin-top: 16px; padding: 13px 15px; border-left: 3px solid var(--lime); background: rgba(0,0,0,.18); }
+
+    .exercise-toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .filter { border: 1px solid var(--line); border-radius: 999px; background: transparent; padding: 8px 13px; cursor: pointer; font-weight: 800; }
+    .filter.active { background: var(--ink); color: white; }
+    .exercise-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .exercise { position: relative; display: grid; grid-template-columns: auto 1fr; gap: 14px; border: 1px solid var(--line); background: var(--surface); border-radius: 16px; padding: 20px; }
+    .exercise input { width: 20px; height: 20px; accent-color: var(--green); }
+    .exercise h3 { margin: 0 0 6px; font-size: 1rem; }
+    .exercise p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .exercise small { display: inline-block; margin-top: 10px; text-transform: uppercase; letter-spacing: .08em; font-weight: 900; color: var(--orange); }
+    .exercise.done { opacity: .62; }
+    .exercise.done h3 { text-decoration: line-through; }
+
+    .progress-wrap { display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; margin-bottom: 26px; }
+    .progress-bar { height: 10px; overflow: hidden; background: #ded8ca; border-radius: 999px; }
+    .progress-bar span { display: block; height: 100%; width: 0; background: var(--orange); transition: width .25s ease; }
+    .progress-text { font-weight: 900; font-variant-numeric: tabular-nums; }
+
+    .tools { display: grid; grid-template-columns: 1.2fr .8fr; gap: 16px; }
+    .tool-card { padding: 26px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
+    .tool-card.featured { background: var(--lime); border-color: var(--ink); }
+    .tool-card h3 { margin-top: 0; }
+    .tool-card ul { padding-left: 20px; margin-bottom: 0; }
+
+    footer { padding: 36px 0 46px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+    .hidden { display: none; }
+
+    @media (max-width: 820px) {
+      .hero, .lesson-grid, .tools { grid-template-columns: 1fr; }
+      .hero { padding-top: 48px; }
+      .terminal { transform: none; }
+      .principles { grid-template-columns: 1fr; }
+      .principle { border-right: 0; border-bottom: 1px solid var(--line); }
+      .principle:last-child { border-bottom: 0; }
+      .module { grid-template-columns: 50px 1fr; }
+      .tags { grid-column: 2; justify-content: flex-start; }
+    }
+    @media (max-width: 580px) {
+      .topbar nav { display: none; }
+      .section-head { align-items: start; flex-direction: column; }
+      .exercise-grid { grid-template-columns: 1fr; }
+      .lesson-nav { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell topbar">
+    <div class="brand"><span class="brand-mark">{ }</span> Código Base</div>
+    <nav aria-label="Navegación principal">
+      <a href="#ruta">Ruta</a>
+      <a href="#clase-1">Clase 1</a>
+      <a href="#ejercicios">Ejercicios</a>
+      <a href="#herramientas">Herramientas</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="shell hero">
+      <div>
+        <div class="eyebrow">Programa universitario · Fundamentos primero</div>
+        <h1>Aprender a <em>pensar</em> antes de programar.</h1>
+        <p class="lead">Una ruta práctica para dominar lógica, sintaxis y resolución de problemas con Python, SQL, JavaScript, Java y C++. Sin memorizar cinco lenguajes a la vez.</p>
+        <div class="actions">
+          <a class="button primary" href="#clase-1">Empezar la clase 1 →</a>
+          <a class="button" href="#ruta">Ver el plan completo</a>
+        </div>
+      </div>
+      <aside class="terminal" aria-label="Ejemplo de verificación del entorno">
+        <div class="terminal-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <pre><span class="comment"># Tu entorno está listo cuando...</span>
+<span class="prompt">$</span> python --version
+Python 3.x
+
+<span class="prompt">$</span> node --version
+vXX.x.x
+
+<span class="prompt">$</span> java --version
+openjdk XX
+
+<span class="prompt">$</span> git --version
+git version X.x.x
+
+<span class="comment">✓ No instalamos por instalar:
+  verificamos cada herramienta.</span></pre>
+      </aside>
+    </section>
+
+    <section class="shell section" aria-labelledby="metodo-title">
+      <div class="section-head">
+        <div><div class="eyebrow">Método</div><h2 id="metodo-title">Una base, varios lenguajes.</h2></div>
+        <p class="section-note">La sintaxis cambia; las ideas permanecen. Cada tema se aprende primero en Python y luego se compara con los demás lenguajes.</p>
+      </div>
+      <div class="principles">
+        <article class="principle"><span class="number">01</span><h3>Entender</h3><p>Variables, control de flujo, funciones, datos y memoria antes de perseguir frameworks.</p></article>
+        <article class="principle"><span class="number">02</span><h3>Practicar</h3><p>Ejercicios pequeños, verificables y progresivos. Cada solución debe poder explicarse.</p></article>
+        <article class="principle"><span class="number">03</span><h3>Transferir</h3><p>Resolver el mismo problema en otro lenguaje para separar el concepto de la sintaxis.</p></article>
+      </div>
+    </section>
+
+    <section class="shell section" id="ruta" aria-labelledby="ruta-title">
+      <div class="section-head">
+        <div><div class="eyebrow">Ruta sugerida · 12 clases</div><h2 id="ruta-title">De cero a proyecto.</h2></div>
+        <p class="section-note">Python será el lenguaje principal para lógica y POO. SQL se trabaja como habilidad transversal. Los demás lenguajes sirven para comparar paradigmas y entornos.</p>
+      </div>
+      <div class="roadmap">
+        <article class="module"><span class="module-index">01</span><div><h3>El taller: entorno y terminal</h3><p>Instalación, PATH, versiones, editor, Git y primer programa.</p></div><div class="tags"><span class="tag">Todas</span><span class="tag">Setup</span></div></article>
+        <article class="module"><span class="module-index">02</span><div><h3>Cómo piensa un programa</h3><p>Entrada, proceso, salida, variables, tipos y operadores.</p></div><div class="tags"><span class="tag">Python</span><span class="tag">Lógica</span></div></article>
+        <article class="module"><span class="module-index">03</span><div><h3>Decisiones y repeticiones</h3><p>Condicionales, bucles, trazas y casos límite.</p></div><div class="tags"><span class="tag">Python</span><span class="tag">JavaScript</span></div></article>
+        <article class="module"><span class="module-index">04</span><div><h3>Funciones y descomposición</h3><p>Parámetros, retorno, alcance y diseño de responsabilidades pequeñas.</p></div><div class="tags"><span class="tag">Python</span><span class="tag">Funciones</span></div></article>
+        <article class="module"><span class="module-index">05</span><div><h3>Estructuras de datos</h3><p>Listas, arreglos, mapas, conjuntos y criterios de elección.</p></div><div class="tags"><span class="tag">Python</span><span class="tag">C++</span></div></article>
+        <article class="module"><span class="module-index">06</span><div><h3>SQL y modelo relacional</h3><p>Tablas, claves, SELECT, filtros, JOIN, agregaciones y diseño básico.</p></div><div class="tags"><span class="tag">SQL</span><span class="tag">SQLite</span></div></article>
+        <article class="module"><span class="module-index">07</span><div><h3>Objetos con propósito</h3><p>Clases, estado, comportamiento, encapsulación y composición.</p></div><div class="tags"><span class="tag">Python</span><span class="tag">POO</span></div></article>
+        <article class="module"><span class="module-index">08</span><div><h3>POO tipada</h3><p>Interfaces, herencia con criterio, excepciones y colecciones.</p></div><div class="tags"><span class="tag">Java</span><span class="tag">POO</span></div></article>
+        <article class="module"><span class="module-index">09</span><div><h3>Memoria y compilación</h3><p>Stack, heap, referencias, punteros básicos y ciclo de compilación.</p></div><div class="tags"><span class="tag">C++</span><span class="tag">Memoria</span></div></article>
+        <article class="module"><span class="module-index">10</span><div><h3>Programación funcional básica</h3><p>Funciones puras, inmutabilidad, map, filter y reduce.</p></div><div class="tags"><span class="tag">JavaScript</span><span class="tag">FP</span></div></article>
+        <article class="module"><span class="module-index">11</span><div><h3>Calidad y depuración</h3><p>Lectura de errores, debugger, pruebas, nombres y refactorización.</p></div><div class="tags"><span class="tag">Testing</span><span class="tag">Git</span></div></article>
+        <article class="module"><span class="module-index">12</span><div><h3>Proyecto integrador</h3><p>Aplicación de consola que administra estudiantes, cursos y notas con persistencia SQL.</p></div><div class="tags"><span class="tag">Proyecto</span><span class="tag">Integración</span></div></article>
+      </div>
+    </section>
+
+    <section class="shell section" id="clase-1" aria-labelledby="clase-title">
+      <div class="lesson">
+        <div class="eyebrow">Clase 1 · 90–120 minutos</div>
+        <h2 id="clase-title">Preparar y comprobar el entorno.</h2>
+        <div class="lesson-grid">
+          <div class="lesson-nav" role="tablist" aria-label="Herramientas de la clase">
+            <button class="lesson-tab active" data-tool="editor" role="tab">Editor + Git</button>
+            <button class="lesson-tab" data-tool="python" role="tab">Python</button>
+            <button class="lesson-tab" data-tool="javascript" role="tab">JavaScript</button>
+            <button class="lesson-tab" data-tool="java" role="tab">Java</button>
+            <button class="lesson-tab" data-tool="cpp" role="tab">C++</button>
+            <button class="lesson-tab" data-tool="sql" role="tab">SQL</button>
+          </div>
+          <div class="lesson-panel" id="lesson-panel" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell section" id="ejercicios" aria-labelledby="exercise-title">
+      <div class="section-head">
+        <div><div class="eyebrow">Práctica inicial</div><h2 id="exercise-title">Demuestra que funciona.</h2></div>
+        <p class="section-note">Marcar una tarea guarda el progreso en este navegador. La evidencia real es poder explicar qué comando ejecutaste y qué resultado obtuviste.</p>
+      </div>
+      <div class="progress-wrap" aria-label="Progreso de ejercicios"><strong>Progreso</strong><div class="progress-bar"><span id="progress-bar"></span></div><span class="progress-text" id="progress-text">0/8</span></div>
+      <div class="exercise-toolbar" aria-label="Filtrar ejercicios">
+        <button class="filter active" data-filter="all">Todos</button>
+        <button class="filter" data-filter="setup">Entorno</button>
+        <button class="filter" data-filter="logic">Lógica</button>
+        <button class="filter" data-filter="sql">SQL</button>
+      </div>
+      <div class="exercise-grid">
+        <label class="exercise" data-category="setup"><input type="checkbox" data-id="terminal"><span><h3>Radiografía del equipo</h3><p>Identifica sistema operativo, arquitectura y carpeta personal desde la terminal.</p><small>10 min · Entorno</small></span></label>
+        <label class="exercise" data-category="setup"><input type="checkbox" data-id="versions"><span><h3>Inventario verificable</h3><p>Crea un archivo con la salida de los comandos de versión de cada herramienta instalada.</p><small>15 min · Entorno</small></span></label>
+        <label class="exercise" data-category="setup"><input type="checkbox" data-id="git"><span><h3>Primer repositorio</h3><p>Inicializa Git, crea README.md y registra el primer commit con un mensaje claro.</p><small>15 min · Entorno</small></span></label>
+        <label class="exercise" data-category="logic"><input type="checkbox" data-id="hello"><span><h3>Cinco saludos</h3><p>Ejecuta “Hola, mundo” en Python, JavaScript, Java, C++ y una consulta equivalente en SQL.</p><small>25 min · Comparación</small></span></label>
+        <label class="exercise" data-category="logic"><input type="checkbox" data-id="temperature"><span><h3>Conversor de temperatura</h3><p>Lee grados Celsius y muestra Fahrenheit. Escribe primero la fórmula en papel.</p><small>20 min · Python</small></span></label>
+        <label class="exercise" data-category="logic"><input type="checkbox" data-id="grade"><span><h3>Clasificador de notas</h3><p>Convierte una nota numérica en una categoría y prueba los valores límite.</p><small>25 min · Condicionales</small></span></label>
+        <label class="exercise" data-category="sql"><input type="checkbox" data-id="students"><span><h3>Tabla de estudiantes</h3><p>Crea una tabla con cinco registros y consulta estudiantes por promedio.</p><small>25 min · SQL</small></span></label>
+        <label class="exercise" data-category="sql"><input type="checkbox" data-id="join"><span><h3>Relaciona cursos y matrículas</h3><p>Diseña tres tablas y obtén nombre de estudiante, curso y estado mediante JOIN.</p><small>35 min · SQL</small></span></label>
+      </div>
+    </section>
+
+    <section class="shell section" id="herramientas" aria-labelledby="tools-title">
+      <div class="section-head"><div><div class="eyebrow">Herramientas recomendadas</div><h2 id="tools-title">Menos ruido, mejor práctica.</h2></div></div>
+      <div class="tools">
+        <article class="tool-card featured"><h3>Kit principal</h3><ul><li><strong>VS Code:</strong> un editor común para comparar lenguajes sin cambiar de entorno.</li><li><strong>Git + GitHub:</strong> historial, entregas y revisión del progreso.</li><li><strong>Python + pytest:</strong> fundamentos y pruebas automatizadas.</li><li><strong>SQLite primero:</strong> SQL sin administrar un servidor; PostgreSQL después.</li><li><strong>DevTools del navegador:</strong> consola, red y depuración de JavaScript.</li></ul></article>
+        <article class="tool-card"><h3>Regla de aprendizaje</h3><p>No añadir frameworks todavía. React, Spring o Django antes de dominar funciones, datos, errores y pruebas solo esconden los huecos.</p><p><strong>Criterio de avance:</strong> el estudiante puede resolver, probar y explicar un problema sin copiar una solución.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="shell">Código Base · Ruta educativa editable · El progreso se guarda localmente en el navegador.</div></footer>
+
+  <script>
+    const lessons = {
+      editor: {
+        title: 'Editor y control de versiones',
+        body: `<ol><li>Instala <a href="https://code.visualstudio.com/download" target="_blank" rel="noreferrer">Visual Studio Code</a>.</li><li>Instala <a href="https://git-scm.com/downloads" target="_blank" rel="noreferrer">Git</a>.</li><li>Crea una carpeta <code>programacion</code> y ábrela desde el editor.</li><li>Abre la terminal integrada. Aprende <code>pwd</code>/<code>cd</code>, <code>ls</code>/<code>dir</code> y <code>mkdir</code>.</li></ol>`,
+        command: 'git --version', outcome: 'Resultado esperado: se muestra la versión de Git. Después, configura tu nombre y correo para registrar cambios.'
+      },
+      python: {
+        title: 'Python: lenguaje principal',
+        body: `<ol><li>Descarga Python desde el <a href="https://www.python.org/downloads/" target="_blank" rel="noreferrer">sitio oficial</a>.</li><li>En Windows, permite que el instalador agregue Python al PATH.</li><li>Crea <code>hola.py</code> con <code>print("Hola, mundo")</code>.</li></ol>`,
+        command: 'python --version && python hola.py', outcome: 'Si “python” no existe, prueba “py” en Windows o “python3” en macOS/Linux. No avances sin entender qué ejecutable encontró la terminal.'
+      },
+      javascript: {
+        title: 'JavaScript: navegador y Node.js',
+        body: `<ol><li>Prueba JavaScript primero en la consola del navegador.</li><li>Instala una versión LTS desde <a href="https://nodejs.org/en/download" target="_blank" rel="noreferrer">Node.js</a> para ejecutar archivos desde la terminal.</li><li>Crea <code>hola.js</code> con <code>console.log("Hola, mundo")</code>.</li></ol>`,
+        command: 'node --version && npm --version && node hola.js', outcome: 'Node ejecuta JavaScript fuera del navegador; npm administra paquetes. Son herramientas relacionadas, pero NO son lo mismo.'
+      },
+      java: {
+        title: 'Java: JDK y compilación',
+        body: `<ol><li>Instala un JDK LTS de <a href="https://adoptium.net/temurin/releases/" target="_blank" rel="noreferrer">Eclipse Temurin</a>.</li><li>Crea <code>Main.java</code> con una clase <code>Main</code> y un método <code>main</code>.</li><li>Compila y luego ejecuta. Observa que son dos pasos diferentes.</li></ol>`,
+        command: 'javac --version && java --version', outcome: 'El JDK incluye el compilador javac. Una instalación que solo permite ejecutar Java no basta para desarrollar.'
+      },
+      cpp: {
+        title: 'C++: compilador, no solo extensión',
+        body: `<ol><li>Instala la extensión C/C++ de VS Code.</li><li>Instala un compilador: MSVC o MinGW en Windows, Clang en macOS, GCC en Linux.</li><li>Sigue la <a href="https://code.visualstudio.com/docs/languages/cpp" target="_blank" rel="noreferrer">guía oficial de C++ en VS Code</a>.</li></ol>`,
+        command: 'g++ --version', outcome: 'La extensión aporta edición e IntelliSense, pero NO incluye un compilador. Si este comando falla, el entorno aún no está completo.'
+      },
+      sql: {
+        title: 'SQL: empezar simple',
+        body: `<ol><li>Usa <a href="https://sqlite.org/fiddle/" target="_blank" rel="noreferrer">SQLite Fiddle</a> para comenzar sin instalación.</li><li>Después instala la CLI desde <a href="https://sqlite.org/download.html" target="_blank" rel="noreferrer">SQLite</a>.</li><li>Cuando domines tablas, consultas y JOIN, pasa a <a href="https://www.postgresql.org/download/" target="_blank" rel="noreferrer">PostgreSQL</a>.</li></ol>`,
+        command: 'sqlite3 --version', outcome: 'SQLite reduce la fricción inicial. PostgreSQL llega después para aprender servidor, usuarios, conexiones y administración.'
+      }
+    };
+
+    const panel = document.querySelector('#lesson-panel');
+    function renderLesson(key) {
+      const item = lessons[key];
+      panel.innerHTML = `<h3>${item.title}</h3>${item.body}<div class="command"><code>${item.command}</code><button class="copy" data-copy="${item.command.replaceAll('"', '&quot;')}">Copiar</button></div><div class="outcome"><strong>Comprobación:</strong> ${item.outcome}</div>`;
+    }
+    renderLesson('editor');
+
+    document.querySelectorAll('.lesson-tab').forEach(button => button.addEventListener('click', () => {
+      document.querySelectorAll('.lesson-tab').forEach(item => item.classList.remove('active'));
+      button.classList.add('active');
+      renderLesson(button.dataset.tool);
+    }));
+
+    panel.addEventListener('click', async event => {
+      const button = event.target.closest('[data-copy]');
+      if (!button) return;
+      await navigator.clipboard.writeText(button.dataset.copy);
+      button.textContent = 'Copiado';
+      setTimeout(() => button.textContent = 'Copiar', 1200);
+    });
+
+    const checks = [...document.querySelectorAll('.exercise input')];
+    const saved = JSON.parse(localStorage.getItem('codigo-base-progress') || '{}');
+    function updateProgress() {
+      const complete = checks.filter(check => check.checked).length;
+      document.querySelector('#progress-text').textContent = `${complete}/${checks.length}`;
+      document.querySelector('#progress-bar').style.width = `${(complete / checks.length) * 100}%`;
+      checks.forEach(check => check.closest('.exercise').classList.toggle('done', check.checked));
+      localStorage.setItem('codigo-base-progress', JSON.stringify(Object.fromEntries(checks.map(check => [check.dataset.id, check.checked]))));
+    }
+    checks.forEach(check => { check.checked = Boolean(saved[check.dataset.id]); check.addEventListener('change', updateProgress); });
+    updateProgress();
+
+    document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => {
+      document.querySelectorAll('.filter').forEach(item => item.classList.remove('active'));
+      button.classList.add('active');
+      document.querySelectorAll('.exercise').forEach(card => card.classList.toggle('hidden', button.dataset.filter !== 'all' && card.dataset.category !== button.dataset.filter));
+    }));
+  </script>
+</body>
+</html>
