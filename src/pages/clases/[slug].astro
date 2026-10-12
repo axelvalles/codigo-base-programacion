@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const lessons = await getCollection('lessons');
+  return lessons.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { number, title, summary, duration, status, topics, setupTools = [] } = entry.data;
+const isOutline = status === 'outline';
+---
+
+<BaseLayout title={`Clase ${number}: ${title} — Código Base`} description={summary}>
+  <section class="shell section lesson-detail">
+    <a class="back-link" href="/#ruta">← Volver a la ruta</a>
+    <div class="lesson-detail-head">
+      <div>
+        <div class="eyebrow">Clase {String(number).padStart(2, '0')}{duration ? ` · ${duration}` : ''}</div>
+        <h1>{title}</h1>
+        <p class="lead">{summary}</p>
+        <div class="tags lesson-tags">{topics.map((topic) => <span class="tag">{topic}</span>)}</div>
+      </div>
+      {isOutline && <p class="draft-notice"><strong>Borrador de ruta.</strong> Esta página contiene solo un esquema; la lección completa está pendiente de preparación.</p>}
+    </div>
+
+    {setupTools.length > 0 && (
+      <section class="lesson setup-lesson" aria-label="Instalación y comprobación de herramientas">
+        <div class="eyebrow">Entorno de trabajo</div>
+        <h2>Preparar y comprobar el entorno.</h2>
+        <div class="lesson-grid">
+          <div class="lesson-nav" role="tablist" aria-label="Herramientas de la clase">
+            {setupTools.map((tool, index) => (
+              <button
+                class:list={["lesson-tab", { active: index === 0 }]}
+                id={`tab-${tool.id}`}
+                data-setup-tab={tool.id}
+                role="tab"
+                aria-selected={index === 0 ? 'true' : 'false'}
+                aria-controls={`panel-${tool.id}`}
+                tabindex={index === 0 ? 0 : -1}
+              >{tool.label}</button>
+            ))}
+          </div>
+          <div class="setup-panels" aria-live="polite">
+            {setupTools.map((tool, index) => (
+              <section
+                class="lesson-panel"
+                id={`panel-${tool.id}`}
+                data-setup-panel={tool.id}
+                role="tabpanel"
+                aria-labelledby={`tab-${tool.id}`}
+                hidden={index !== 0}
+                tabindex="0"
+              >
+                <h3>{tool.title}</h3>
+                <ol>{tool.instructions.map((instruction) => <li>{instruction}</li>)}</ol>
+                {tool.resources.length > 0 && <div class="resource-links"><strong>Recursos oficiales:</strong><ul>{tool.resources.map((resource) => <li><a href={resource.url} target="_blank" rel="noreferrer">{resource.label}</a></li>)}</ul></div>}
+                <div class="command"><code>{tool.command}</code><button class="copy" type="button" data-copy={tool.command}>Copiar</button></div>
+                <div class="outcome"><strong>Comprobación:</strong> {tool.outcome}</div>
+              </section>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <article class="lesson-content"><Content /></article>
+    {isOutline && <p class="outline-footer">Este contenido todavía está en etapa de esquema. No se presenta como una clase lista para dictar.</p>}
+    <div class="lesson-actions"><a class="button" href="/#ejercicios">Ir a los ejercicios iniciales →</a></div>
+  </section>
+  <script>
+    import '../../scripts/lesson-tabs';
+  </script>
+</BaseLayout>

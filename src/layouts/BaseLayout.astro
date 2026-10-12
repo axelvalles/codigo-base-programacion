@@ -1,0 +1,37 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Ruta práctica para reforzar fundamentos de programación con Python, SQL, Java, JavaScript y C++.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="shell topbar">
+      <a class="brand" href="/" aria-label="Código Base, inicio">
+        <span class="brand-mark" aria-hidden="true">&#123; &#125;</span> Código Base
+      </a>
+      <nav aria-label="Navegación principal">
+        <a href="/#ruta">Ruta</a>
+        <a href="/clases/01-preparar-entorno/">Clase 1</a>
+        <a href="/#ejercicios">Ejercicios</a>
+        <a href="/#herramientas">Herramientas</a>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer><div class="shell">Código Base · Ruta educativa editable · El progreso se guarda localmente en el navegador.</div></footer>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+export const exercises = [
+  {
+    id: 'terminal',
+    category: 'setup',
+    title: 'Radiografía del equipo',
+    description: 'Identifica sistema operativo, arquitectura y carpeta personal desde la terminal.',
+    estimate: '10 min · Entorno',
+  },
+  {
+    id: 'versions',
+    category: 'setup',
+    title: 'Inventario verificable',
+    description: 'Crea un archivo con la salida de los comandos de versión de cada herramienta instalada.',
+    estimate: '15 min · Entorno',
+  },
+  {
+    id: 'git',
+    category: 'setup',
+    title: 'Primer repositorio',
+    description: 'Inicializa Git, crea README.md y registra el primer commit con un mensaje claro.',
+    estimate: '15 min · Entorno',
+  },
+  {
+    id: 'hello',
+    category: 'logic',
+    title: 'Cinco saludos',
+    description: 'Ejecuta “Hola, mundo” en Python, JavaScript, Java, C++ y una consulta equivalente en SQL.',
+    estimate: '25 min · Comparación',
+  },
+  {
+    id: 'temperature',
+    category: 'logic',
+    title: 'Conversor de temperatura',
+    description: 'Lee grados Celsius y muestra Fahrenheit. Escribe primero la fórmula en papel.',
+    estimate: '20 min · Python',
+  },
+  {
+    id: 'grade',
+    category: 'logic',
+    title: 'Clasificador de notas',
+    description: 'Convierte una nota numérica en una categoría y prueba los valores límite.',
+    estimate: '25 min · Condicionales',
+  },
+  {
+    id: 'students',
+    category: 'sql',
+    title: 'Tabla de estudiantes',
+    description: 'Crea una tabla con cinco registros y consulta estudiantes por promedio.',
+    estimate: '25 min · SQL',
+  },
+  {
+    id: 'join',
+    category: 'sql',
+    title: 'Relaciona cursos y matrículas',
+    description: 'Diseña tres tablas y obtén nombre de estudiante, curso y estado mediante JOIN.',
+    estimate: '35 min · SQL',
+  },
+] as const;

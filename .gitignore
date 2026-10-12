@@ -1,0 +1,8 @@
+# Local tooling and generated package dependencies
+.codegraph/
+.astro/
+.atl/
+node_modules/
+
+# Local Site source archive; never include it in the Astro project
+codigo-base-site.tar.gz
