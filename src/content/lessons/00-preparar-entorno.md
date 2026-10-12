@@ -1,7 +1,7 @@
 ---
-number: 1
-title: "El taller: entorno y terminal"
-summary: "Instalación, PATH, versiones, editor, Git y primer programa."
+number: 0
+title: "Instalación de herramientas y entorno de trabajo"
+summary: "Instala y comprueba el editor, Git y los entornos de Python, JavaScript, Java, C++ y SQL."
 duration: "90–120 minutos"
 status: published
 topics: [Todas, Setup, Terminal]

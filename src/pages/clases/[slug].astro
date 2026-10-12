@@ -4,29 +4,30 @@ import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const lessons = await getCollection('lessons');
-  return lessons.map((entry) => ({
-    params: { slug: entry.id },
-    props: { entry },
-  }));
+  return lessons
+    .filter((entry) => entry.data.status === 'published' && entry.data.number <= 1)
+    .map((entry) => ({
+      params: { slug: entry.id },
+      props: { entry },
+    }));
 }
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { number, title, summary, duration, status, topics, setupTools = [] } = entry.data;
-const isOutline = status === 'outline';
+const { number, title, summary, duration, topics, setupTools = [] } = entry.data;
+const displayNumber = number === 0 ? '0' : String(number).padStart(2, '0');
 ---
 
 <BaseLayout title={`Clase ${number}: ${title} — Código Base`} description={summary}>
   <section class="shell section lesson-detail">
-    <a class="back-link" href="/#ruta">← Volver a la ruta</a>
+    <a class="back-link" href="/#clases">← Volver a las clases</a>
     <div class="lesson-detail-head">
       <div>
-        <div class="eyebrow">Clase {String(number).padStart(2, '0')}{duration ? ` · ${duration}` : ''}</div>
+        <div class="eyebrow">Clase {displayNumber}{duration ? ` · ${duration}` : ''}</div>
         <h1>{title}</h1>
         <p class="lead">{summary}</p>
         <div class="tags lesson-tags">{topics.map((topic) => <span class="tag">{topic}</span>)}</div>
       </div>
-      {isOutline && <p class="draft-notice"><strong>Borrador de ruta.</strong> Esta página contiene solo un esquema; la lección completa está pendiente de preparación.</p>}
     </div>
 
     {setupTools.length > 0 && (
@@ -71,8 +72,6 @@ const isOutline = status === 'outline';
     )}
 
     <article class="lesson-content"><Content /></article>
-    {isOutline && <p class="outline-footer">Este contenido todavía está en etapa de esquema. No se presenta como una clase lista para dictar.</p>}
-    <div class="lesson-actions"><a class="button" href="/#ejercicios">Ir a los ejercicios iniciales →</a></div>
   </section>
   <script>
     import '../../scripts/lesson-tabs';

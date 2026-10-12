@@ -17,7 +17,7 @@ const setupToolSchema = z.object({
 const lessons = defineCollection({
   loader: glob({ base: './src/content/lessons', pattern: '**/*.md' }),
   schema: z.object({
-    number: z.number().int().positive(),
+    number: z.number().int().min(0),
     title: z.string(),
     summary: z.string(),
     duration: z.string().optional(),

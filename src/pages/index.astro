@@ -1,116 +1,39 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import { exercises } from '../data/exercises';
 
-const lessons = (await getCollection('lessons')).sort((a, b) => a.data.number - b.data.number);
-const firstLesson = lessons.find((lesson) => lesson.data.number === 1);
+const lessons = (await getCollection('lessons'))
+  .filter((lesson) => lesson.data.status === 'published' && lesson.data.number <= 1)
+  .sort((a, b) => a.data.number - b.data.number);
 ---
 
-<BaseLayout title="Código Base — Ruta de programación">
+<BaseLayout
+  title="Clases de programación — Código Base"
+  description="Material de las clases 0 y 1: preparación del entorno, variables y operaciones en JavaScript."
+>
   <section class="shell hero">
     <div>
-      <div class="eyebrow">Programa universitario · Fundamentos primero</div>
-      <h1>Aprender a <em>pensar</em> antes de programar.</h1>
-      <p class="lead">Una ruta práctica para dominar lógica, sintaxis y resolución de problemas con Python, SQL, JavaScript, Java y C++. Sin memorizar cinco lenguajes a la vez.</p>
-      <div class="actions">
-        <a class="button primary" href="/clases/01-preparar-entorno/">Empezar la clase 1 →</a>
-        <a class="button" href="#ruta">Ver el plan completo</a>
-      </div>
-    </div>
-    <aside class="terminal" aria-label="Ejemplo de verificación del entorno">
-      <div class="terminal-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-      <pre><span class="comment"># Tu entorno está listo cuando...</span>
-<span class="prompt">$</span> python --version
-Python 3.x
-
-<span class="prompt">$</span> node --version
-vXX.x.x
-
-<span class="prompt">$</span> java --version
-openjdk XX
-
-<span class="prompt">$</span> git --version
-git version X.x.x
-
-<span class="comment">✓ No instalamos por instalar:
-  verificamos cada herramienta.</span></pre>
-    </aside>
-  </section>
-
-  <section class="shell section" aria-labelledby="metodo-title">
-    <div class="section-head">
-      <div><div class="eyebrow">Método</div><h2 id="metodo-title">Una base, varios lenguajes.</h2></div>
-      <p class="section-note">La sintaxis cambia; las ideas permanecen. Cada tema se aprende primero en Python y luego se compara con los demás lenguajes.</p>
-    </div>
-    <div class="principles">
-      <article class="principle"><span class="number">01</span><h3>Entender</h3><p>Variables, control de flujo, funciones, datos y memoria antes de perseguir frameworks.</p></article>
-      <article class="principle"><span class="number">02</span><h3>Practicar</h3><p>Ejercicios pequeños, verificables y progresivos. Cada solución debe poder explicarse.</p></article>
-      <article class="principle"><span class="number">03</span><h3>Transferir</h3><p>Resolver el mismo problema en otro lenguaje para separar el concepto de la sintaxis.</p></article>
+      <div class="eyebrow">Clases de programación</div>
+      <h1>Empezamos por los <em>fundamentos.</em></h1>
+      <p class="lead">Prepara tu entorno y aprende variables y operaciones en JavaScript.</p>
     </div>
   </section>
 
-  <section class="shell section" id="ruta" aria-labelledby="ruta-title">
+  <section class="shell section" id="clases" aria-labelledby="clases-title">
     <div class="section-head">
-      <div><div class="eyebrow">Ruta sugerida · {lessons.length} clases</div><h2 id="ruta-title">De cero a proyecto.</h2></div>
-      <p class="section-note">Python será el lenguaje principal para lógica y POO. SQL se trabaja como habilidad transversal. Los demás lenguajes sirven para comparar paradigmas y entornos.</p>
+      <div><div class="eyebrow">Contenido disponible</div><h2 id="clases-title">Clases 0 y 1</h2></div>
     </div>
     <div class="roadmap">
       {lessons.map((lesson) => (
         <a class="module" href={`/clases/${lesson.id}/`}>
-          <span class="module-index">{String(lesson.data.number).padStart(2, '0')}</span>
+          <span class="module-index">{lesson.data.number}</span>
           <div>
             <h3>{lesson.data.title}</h3>
             <p>{lesson.data.summary}</p>
-            {lesson.data.status === 'outline' && <span class="draft-label">Borrador · esquema, contenido pendiente</span>}
           </div>
           <div class="tags">{lesson.data.topics.map((topic) => <span class="tag">{topic}</span>)}</div>
         </a>
       ))}
     </div>
   </section>
-
-  {firstLesson && (
-    <section class="shell section" id="clase-1" aria-labelledby="clase-title">
-      <div class="lesson-preview">
-        <div class="eyebrow">Clase 1 · {firstLesson.data.duration}</div>
-        <h2 id="clase-title">Preparar y comprobar el entorno.</h2>
-        <p>Instala y verifica el editor, Git, Python, Node.js, Java, un compilador de C++ y las herramientas iniciales para SQL.</p>
-        <a class="button primary" href={`/clases/${firstLesson.id}/`}>Abrir la clase 1 →</a>
-      </div>
-    </section>
-  )}
-
-  <section class="shell section" id="ejercicios" aria-labelledby="exercise-title">
-    <div class="section-head">
-      <div><div class="eyebrow">Práctica inicial</div><h2 id="exercise-title">Demuestra que funciona.</h2></div>
-      <p class="section-note">Marcar una tarea guarda el progreso en este navegador. La evidencia real es poder explicar qué comando ejecutaste y qué resultado obtuviste.</p>
-    </div>
-    <div class="progress-wrap" aria-label="Progreso de ejercicios"><strong>Progreso</strong><div class="progress-bar"><span id="progress-bar"></span></div><span class="progress-text" id="progress-text">0/8</span></div>
-    <div class="exercise-toolbar" aria-label="Filtrar ejercicios">
-      <button class="filter active" data-filter="all">Todos</button>
-      <button class="filter" data-filter="setup">Entorno</button>
-      <button class="filter" data-filter="logic">Lógica</button>
-      <button class="filter" data-filter="sql">SQL</button>
-    </div>
-    <div class="exercise-grid">
-      {exercises.map((exercise) => (
-        <label class="exercise" data-category={exercise.category}>
-          <input type="checkbox" data-id={exercise.id} />
-          <span><h3>{exercise.title}</h3><p>{exercise.description}</p><small>{exercise.estimate}</small></span>
-        </label>
-      ))}
-    </div>
-  </section>
-
-  <section class="shell section" id="herramientas" aria-labelledby="tools-title">
-    <div class="section-head"><div><div class="eyebrow">Herramientas recomendadas</div><h2 id="tools-title">Menos ruido, mejor práctica.</h2></div></div>
-    <div class="tools">
-      <article class="tool-card featured"><h3>Kit principal</h3><ul><li><strong>VS Code:</strong> un editor común para comparar lenguajes sin cambiar de entorno.</li><li><strong>Git + GitHub:</strong> historial, entregas y revisión del progreso.</li><li><strong>Python + pytest:</strong> fundamentos y pruebas automatizadas.</li><li><strong>SQLite primero:</strong> SQL sin administrar un servidor; PostgreSQL después.</li><li><strong>DevTools del navegador:</strong> consola, red y depuración de JavaScript.</li></ul></article>
-      <article class="tool-card"><h3>Regla de aprendizaje</h3><p>No añadir frameworks todavía. React, Spring o Django antes de dominar funciones, datos, errores y pruebas solo esconden los huecos.</p><p><strong>Criterio de avance:</strong> el estudiante puede resolver, probar y explicar un problema sin copiar una solución.</p></article>
-    </div>
-  </section>
-  <script>
-    import '../scripts/exercise-progress';
-  </script>
 </BaseLayout>
