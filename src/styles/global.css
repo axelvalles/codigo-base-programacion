@@ -120,6 +120,37 @@ footer { padding: 36px 0 46px; border-top: 1px solid var(--line); color: var(--m
 .lesson-content { max-width: 760px; font-size: 1.05rem; }
 .lesson-content h2, .lesson-content h3 { margin-top: 1.8em; }
 .lesson-content a { color: var(--green); }
+.lesson-content :not(pre) > code {
+  padding: .12em .38em;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: rgba(255, 253, 247, .78);
+  font-size: .88em;
+  white-space: nowrap;
+}
+.lesson-content pre {
+  max-width: 100%;
+  margin: 18px 0 22px;
+  padding: 18px 20px;
+  overflow-x: auto;
+  border: 1px solid rgba(22, 32, 25, .22);
+  border-radius: 12px;
+  box-shadow: 0 5px 16px rgba(22, 32, 25, .08);
+  font-size: .9rem;
+  line-height: 1.65;
+  tab-size: 2;
+  -webkit-overflow-scrolling: touch;
+}
+.lesson-content pre > code {
+  display: block;
+  min-width: max-content;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: inherit;
+  line-height: inherit;
+  white-space: inherit;
+}
 .lesson-content blockquote { margin: 24px 0; padding: 14px 18px; border-left: 4px solid var(--orange); background: var(--surface); }
 .outline-footer { max-width: 760px; margin-top: 28px; color: var(--muted); font-weight: 700; }
 .lesson-actions { margin-top: 34px; }
