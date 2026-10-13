@@ -7,7 +7,7 @@ status: published
 topics: [JavaScript, Python, C++, Java, Variables, Tipos de datos, Operadores]
 ---
 
-En esta clase vas a guardar valores en variables y usar operaciones aritméticas para resolver cálculos. Antes de ejecutar cada ejemplo, intenta predecir qué aparecerá en la consola.
+En esta clase vas a guardar valores en variables y usar operaciones aritméticas para resolver cálculos. Antes de ejecutar cada ejemplo, intenta predecir qué aparecerá en la consola. Guarda cada bloque en el archivo indicado y abre la terminal integrada en la carpeta donde lo guardaste.
 
 ## 1. Variables y valores
 
@@ -30,6 +30,12 @@ console.log(nombre);
 console.log(edad);
 console.log(ciudad);
 console.log(esMayorDeEdad);
+```
+
+Guarda el bloque como `variables.js` y ejecútalo con Node.js:
+
+```powershell
+node variables.js
 ```
 
 **Salida esperada:**
@@ -69,6 +75,12 @@ console.log(resta);
 console.log(multiplicacion);
 console.log(division);
 console.log(operacionCompuesta);
+```
+
+Guarda este bloque como `operaciones.js` y ejecútalo con Node.js:
+
+```powershell
+node operaciones.js
 ```
 
 **Salida esperada:**
@@ -115,6 +127,14 @@ print(division)
 print(operacion_compuesta)
 ```
 
+Guarda el bloque como `variables.py` y ejecútalo desde PowerShell:
+
+```powershell
+python variables.py
+```
+
+Si PowerShell no reconoce `python`, prueba `py variables.py`.
+
 ### C++
 
 En C++ se escribe el tipo de cada variable (`std::string`, `int` o `bool`). El ejemplo se ejecuta dentro de `main()` y usa `std::cout` para mostrar resultados.
@@ -149,6 +169,20 @@ int main() {
 }
 ```
 
+Guarda el bloque como `variables.cpp`. Con MinGW/GCC, compílalo y ejecútalo desde PowerShell:
+
+```powershell
+g++ variables.cpp -o variables.exe
+.\variables.exe
+```
+
+Si instalaste MSVC, usa **Developer PowerShell for Visual Studio**:
+
+```powershell
+cl /EHsc variables.cpp
+.\variables.exe
+```
+
 `std::boolalpha` hace que `std::cout` escriba `true` o `false` en lugar de `1` o `0` para un valor lógico.
 
 ### Java
@@ -181,6 +215,13 @@ public class Ejemplo {
         System.out.println(operacionCompuesta);
     }
 }
+```
+
+Guarda el archivo como `Ejemplo.java`, igual que el nombre de la clase pública. Luego compílalo y ejecútalo desde PowerShell:
+
+```powershell
+javac Ejemplo.java
+java Ejemplo
 ```
 
 **Diferencia importante en la división:** Python calcula `20 / 5` y muestra `4.0`. En JavaScript muestra `4`. En C++ y Java, cuando ambos operandos son enteros, la división también es entera; aquí da `4` porque la división es exacta. Para conservar decimales en esos dos lenguajes, usa valores decimales, por ejemplo `20.0 / 6.0`.
