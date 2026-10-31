@@ -2,23 +2,11 @@
 number: 3
 title: "Ciclos y repetición"
 summary: "Repite instrucciones con for y while, controla contadores y acumula resultados sin crear ciclos infinitos."
-duration: "65–70 minutos"
 status: published
 topics: [JavaScript, Python, C++, Java, Ciclos, Repetición]
 ---
 
 Al terminar esta clase podrás elegir entre `for` y `while`, seguir el valor de un contador y usar un acumulador. Empezaremos con JavaScript y compararemos un mismo ciclo en Python, C++ y Java.
-
-## Ruta de la clase
-
-| Tiempo | Actividad |
-|---|---|
-| 5 min | Recordar condiciones y preparar el problema |
-| 10 min | Distinguir `for` de `while` |
-| 15 min | Repetir una acción con `for` |
-| 15 min | Sumar valores con un acumulador |
-| 10 min | Ejecutar un ciclo con `while` y revisar sus límites |
-| 10–15 min | Comparar lenguajes y practicar |
 
 ## 1. ¿Para qué sirve un ciclo?
 
@@ -168,7 +156,7 @@ public class Ciclos {
 
 Compila y ejecuta con `javac Ciclos.java` y después `java Ciclos`.
 
-## 6. Práctica en clase
+## 6. Práctica
 
 Resuelve primero en JavaScript. Antes de ejecutar, predice la salida y explica qué hace que el ciclo termine.
 
@@ -176,12 +164,5 @@ Resuelve primero en JavaScript. Antes de ejecutar, predice la salida y explica q
 2. Usa un acumulador para sumar del `1` al `10`. Comprueba que el resultado sea `55`.
 3. Usa `while` para mostrar una cuenta regresiva del `5` al `1`. El contador debe disminuir en cada vuelta.
 4. Cambia el límite del primer ejercicio a `5` y compara `numero <= 5` con `numero < 5`. ¿Qué número deja de aparecer?
-
-### Puedes explicarlo si...
-
-- eliges `for` cuando el conteo está definido y `while` cuando la repetición depende de una condición;
-- identificas el inicio, la condición y la actualización de un ciclo;
-- explicas cómo un acumulador conserva un total parcial;
-- revisas los valores de inicio y fin y compruebas que un `while` pueda terminar.
 
 El siguiente paso recomendado es aprender funciones para organizar instrucciones repetibles. Más adelante combinaremos ciclos con listas y arreglos para procesar varios datos.

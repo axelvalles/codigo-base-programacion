@@ -2,23 +2,11 @@
 number: 4
 title: "Funciones y valores de retorno"
 summary: "Organiza un problema en funciones pequeñas, usa parámetros para recibir datos y return para entregar resultados."
-duration: "65–70 minutos"
 status: published
 topics: [JavaScript, Python, C++, Java, Funciones, Parámetros, Retorno]
 ---
 
 Al terminar esta clase podrás definir y llamar funciones, distinguir parámetros de argumentos y devolver un resultado con `return`. Empezaremos con JavaScript y compararemos una función sencilla en Python, C++ y Java.
-
-## Ruta de la clase
-
-| Tiempo | Actividad |
-|---|---|
-| 5 min | Recordar variables, condicionales y ciclos |
-| 10 min | Entender qué problema resuelve una función |
-| 15 min | Definir funciones y enviarles argumentos |
-| 15 min | Devolver un resultado y distinguirlo de imprimirlo |
-| 10 min | Dividir un problema en pasos pequeños |
-| 10–15 min | Comparar lenguajes y practicar |
 
 ## 1. ¿Para qué sirve una función?
 
@@ -216,7 +204,7 @@ Compila y ejecuta con `javac Funciones.java` y después `java Funciones`.
 
 ## 6. Práctica
 
-Resuelve en JavaScript. Antes de cada ejecución, identifica los parámetros y los argumentos, y predice el resultado. Los ejercicios 1–4 son para resolver en clase; los ejercicios 5–12 son práctica adicional para continuar después y no hacen parte de los 65–70 minutos.
+Resuelve en JavaScript. Antes de cada ejecución, identifica los parámetros y los argumentos, y predice el resultado. Después, ejecuta el código y compara la salida con el resultado que esperabas.
 
 1. Define `doblar(numero)`, que devuelva el doble de un número. Guarda el resultado de llamar `doblar(8)` y muéstralo.
 2. Define `calcularPromedio(nota1, nota2, nota3)`, que devuelva el promedio de tres notas. Llámala con `4`, `3.5` y `5`.

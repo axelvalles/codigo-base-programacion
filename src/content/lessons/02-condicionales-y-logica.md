@@ -2,23 +2,11 @@
 number: 2
 title: "Condicionales y toma de decisiones"
 summary: "Compara valores, combina condiciones y usa if, else if y else para decidir qué instrucciones ejecutar."
-duration: "60–70 minutos"
 status: published
 topics: [JavaScript, Python, C++, Java, Condicionales, Comparaciones, Booleanos]
 ---
 
 Al terminar esta clase podrás escribir una condición que produzca `true` o `false` y usarla para elegir qué hace el programa. Trabajaremos primero en JavaScript y compararemos una misma decisión en Python, C++ y Java. No usaremos ciclos todavía.
-
-## Ruta de la clase
-
-| Tiempo | Actividad |
-|---|---|
-| 5 min | Recordar variables y valores booleanos |
-| 10 min | Comparar valores |
-| 10 min | Combinar condiciones con operadores lógicos |
-| 15 min | Entender `if`, `else if` y `else` |
-| 15 min | Resolver y probar el ejemplo guiado |
-| 10–15 min | Practicar con valores límite y explicar el resultado |
 
 ## 1. Una condición responde verdadero o falso
 
@@ -216,7 +204,7 @@ javac Condicionales.java
 java Condicionales
 ```
 
-## 6. Práctica y cierre
+## 6. Práctica
 
 Trabaja primero en `condicionales.js`. Antes de ejecutar, escribe qué resultado esperas para cada caso; después cambia `nota` y comprueba la salida.
 
@@ -224,12 +212,5 @@ Trabaja primero en `condicionales.js`. Antes de ejecutar, escribe qué resultado
 2. Cambia la regla para que la categoría **Excelente** empiece en `95`. Prueba `94`, `95` y `100`.
 3. Crea una variable `tienePermiso`. Muestra `"Puede entrar"` solo cuando `edad >= 18` **y** `tienePermiso` sea verdadero; en cualquier otro caso, muestra `"No puede entrar"`.
 4. Explica con tus palabras qué condición se revisa primero y qué ocurre si ninguna condición de `if` o `else if` es verdadera.
-
-### Puedes explicarlo si...
-
-- distingues una comparación de una instrucción condicional;
-- predices si una expresión con `&&`, `||` o `!` da `true` o `false`;
-- explicas por qué el orden de `else if` cambia la clasificación;
-- pruebas límites como `69` y `70`, en lugar de verificar solo un valor del medio.
 
 En la siguiente clase podemos practicar ciclos para repetir instrucciones sin copiarlas varias veces.

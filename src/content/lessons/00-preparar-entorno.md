@@ -2,7 +2,6 @@
 number: 0
 title: "Instalación de herramientas y entorno de trabajo"
 summary: "Instala y comprueba el editor, Git y los entornos de Python, JavaScript, Java, C++ y SQL."
-duration: "90–120 minutos"
 status: published
 topics: [Todas, Setup, Terminal]
 setupTools:
@@ -91,6 +90,6 @@ Esta clase prepara un entorno común para practicar los cinco lenguajes y SQL. L
 
 En cada pestaña encontrarás instrucciones, enlaces oficiales, un comando de verificación y el resultado que debes entender antes de avanzar.
 
-## Criterio de salida
+## Comprueba tu entorno
 
 El entorno está listo cuando puedes abrir la carpeta del curso, ejecutar una comprobación y explicar qué herramienta produjo el resultado. La configuración específica de cada equipo puede variar; sigue la documentación oficial vinculada en cada pestaña.

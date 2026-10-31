@@ -2,7 +2,6 @@
 number: 1
 title: "Variables y operaciones"
 summary: "Declara variables y resuelve operaciones aritméticas en JavaScript; compara la sintaxis con Python, C++ y Java."
-duration: "75–90 minutos"
 status: published
 topics: [JavaScript, Python, C++, Java, Variables, Tipos de datos, Operadores]
 ---
