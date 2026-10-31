@@ -3,25 +3,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 const lessons = (await getCollection('lessons'))
-  .filter((lesson) => lesson.data.status === 'published' && lesson.data.number <= 4)
+  .filter((lesson) => lesson.data.status === 'published' && lesson.data.number <= 5)
   .sort((a, b) => a.data.number - b.data.number);
 ---
 
 <BaseLayout
   title="Clases de programación — Código Base"
-  description="Material de las clases 0 a 4: preparación del entorno, variables, operaciones, condicionales, ciclos y funciones."
+  description="Material de las clases 0 a 5: preparación del entorno, variables, operaciones, condicionales, ciclos, funciones y arreglos."
 >
   <section class="shell hero">
     <div>
       <div class="eyebrow">Clases de programación</div>
       <h1>Empezamos por los <em>fundamentos.</em></h1>
-      <p class="lead">Prepara tu entorno, trabaja con datos, toma decisiones, repite instrucciones y organiza el código en funciones.</p>
+      <p class="lead">Prepara tu entorno, trabaja con datos, toma decisiones, repite instrucciones, organiza el código en funciones y trabaja con colecciones de datos.</p>
     </div>
   </section>
 
   <section class="shell section" id="clases" aria-labelledby="clases-title">
     <div class="section-head">
-      <div><div class="eyebrow">Contenido disponible</div><h2 id="clases-title">Clases 0 a 4</h2></div>
+      <div><div class="eyebrow">Contenido disponible</div><h2 id="clases-title">Clases 0 a 5</h2></div>
     </div>
     <div class="roadmap">
       {lessons.map((lesson) => (
