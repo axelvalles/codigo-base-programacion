@@ -214,33 +214,22 @@ public class Funciones {
 
 Compila y ejecuta con `javac Funciones.java` y después `java Funciones`.
 
-## 6. Práctica en clase
+## 6. Práctica
 
-Resuelve primero en JavaScript. Antes de ejecutar, predice el resultado y explica qué valor recibe cada parámetro.
+Resuelve en JavaScript. Antes de cada ejecución, identifica los parámetros y los argumentos, y predice el resultado. Los ejercicios 1–4 son para resolver en clase; los ejercicios 5–12 son práctica adicional para continuar después y no hacen parte de los 65–70 minutos.
 
 1. Define `doblar(numero)`, que devuelva el doble de un número. Guarda el resultado de llamar `doblar(8)` y muéstralo.
 2. Define `calcularPromedio(nota1, nota2, nota3)`, que devuelva el promedio de tres notas. Llámala con `4`, `3.5` y `5`.
 3. Define `convertirMinutosAHoras(minutos)`, que devuelva las horas correspondientes como número decimal. Prueba con `90`.
 4. En el cálculo del descuento, cambia el porcentaje a `25`. ¿Qué valor devuelve `calcularDescuento(50000, 25)` y cuál es el precio final?
 
-### Puedes explicarlo si...
-
-- distingues una definición de una llamada a función;
-- identificas los parámetros y los argumentos en una llamada;
-- explicas cuándo conviene devolver un valor con `return` en vez de solo imprimirlo;
-- divides un problema en funciones pequeñas con responsabilidades claras.
-
-## 7. Práctica opcional para después de clase
-
-Estas actividades son adicionales y no hacen parte de los 65–70 minutos de la clase. Resuelve cada una en JavaScript. Antes de ejecutar, identifica los parámetros de la función y los argumentos de la llamada, y predice el resultado. Después, compáralo con el resultado esperado.
-
-1. **Elevar al cuadrado** — Define `calcularCuadrado(numero)` para devolver el número multiplicado por sí mismo. Prueba `calcularCuadrado(6)`. **Resultado esperado:** `36`.
-2. **Perímetro de un rectángulo** — Define `calcularPerimetro(base, altura)` para devolver la suma de sus cuatro lados. Prueba `calcularPerimetro(5, 3)`. **Resultado esperado:** `16`.
-3. **Conversión de temperatura** — Define `convertirCelsiusAFahrenheit(celsius)` con la fórmula `celsius * 9 / 5 + 32`. Prueba `convertirCelsiusAFahrenheit(20)`. **Resultado esperado:** `68`.
-4. **Nombre completo** — Define `crearNombreCompleto(nombre, apellido)` para devolver ambos textos separados por un espacio. Prueba `crearNombreCompleto("Sofía", "Rojas")`. **Resultado esperado:** `"Sofía Rojas"`.
-5. **Contar caracteres** — Define `contarCaracteres(texto)` para devolver la cantidad de caracteres. Pista: en JavaScript, `texto.length` indica cuántos caracteres tiene el texto. Prueba `contarCaracteres("codigo")`. **Resultado esperado:** `6`.
-6. **Número positivo** — Define `esPositivo(numero)` para devolver `true` si el número es mayor que cero y `false` en caso contrario. Prueba con `7` y `-2`. **Resultados esperados:** `true` y `false`.
-7. **Dentro de un rango** — Define `estaDentroDeRango(numero, minimo, maximo)` para devolver `true` si el número está entre los límites, incluyendo ambos extremos. Prueba con `(7, 5, 10)`, `(5, 5, 10)` y `(3, 5, 10)`. **Resultados esperados:** `true`, `true` y `false`.
-8. **Componer funciones** — Define `calcularDescuento(precio, porcentaje)` y `calcularPrecioFinal(precio, porcentaje)`. La segunda debe llamar a la primera y restar el descuento del precio. Prueba `calcularPrecioFinal(80000, 20)`. **Resultados esperados:** el descuento es `16000` y el precio final es `64000`.
+5. **Elevar al cuadrado** — Define `calcularCuadrado(numero)` para devolver el número multiplicado por sí mismo. Prueba `calcularCuadrado(6)`. **Resultado esperado:** `36`.
+6. **Perímetro de un rectángulo** — Define `calcularPerimetro(base, altura)` para devolver la suma de sus cuatro lados. Prueba `calcularPerimetro(5, 3)`. **Resultado esperado:** `16`.
+7. **Conversión de temperatura** — Define `convertirCelsiusAFahrenheit(celsius)` con la fórmula `celsius * 9 / 5 + 32`. Prueba `convertirCelsiusAFahrenheit(20)`. **Resultado esperado:** `68`.
+8. **Nombre completo** — Define `crearNombreCompleto(nombre, apellido)` para devolver ambos textos separados por un espacio. Prueba `crearNombreCompleto("Sofía", "Rojas")`. **Resultado esperado:** `"Sofía Rojas"`.
+9. **Contar caracteres** — Define `contarCaracteres(texto)` para devolver la cantidad de caracteres. Pista: en JavaScript, `texto.length` indica cuántos caracteres tiene el texto. Prueba `contarCaracteres("codigo")`. **Resultado esperado:** `6`.
+10. **Número positivo** — Define `esPositivo(numero)` para devolver `true` si el número es mayor que cero y `false` en caso contrario. Prueba con `7` y `-2`. **Resultados esperados:** `true` y `false`.
+11. **Dentro de un rango** — Define `estaDentroDeRango(numero, minimo, maximo)` para devolver `true` si el número está entre los límites, incluyendo ambos extremos. Prueba con `(7, 5, 10)`, `(5, 5, 10)` y `(3, 5, 10)`. **Resultados esperados:** `true`, `true` y `false`.
+12. **Componer funciones** — Define `calcularDescuento(precio, porcentaje)` y `calcularPrecioFinal(precio, porcentaje)`. La segunda debe llamar a la primera y restar el descuento del precio. Prueba `calcularPrecioFinal(80000, 20)`. **Resultados esperados:** el descuento es `16000` y el precio final es `64000`.
 
 El siguiente paso recomendado es estudiar estructuras de datos como listas y arreglos, para guardar colecciones de valores y recorrerlas con ciclos.
